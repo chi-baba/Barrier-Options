@@ -1,5 +1,5 @@
 # Barrier-Options
-Barrier options are a type of exotic option (path dependent) in which the payoff depends on the price of the underlying asset crossing a predefined barrier level.
+Barrier options are a type of path-dependent exotic option in which the payoff depends on the price of the underlying asset crossing a predefined barrier level.
 
 There are four main types of barrier options:
 
