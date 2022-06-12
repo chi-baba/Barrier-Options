@@ -11,7 +11,7 @@ There are four main types of barrier options:
 
 **Down-and-In:** The barrier level lies below the spot price and the option is activated when the underlying drops below the barrier level.
 
-Here, the four types of Barrier options are priced for both calls and puts using the analytic expressions.
+Here, the four types of Barrier options are priced for both calls and puts using analytic expressions[1] and Monte Carlo simulations.
 
 ## References
 <a id="1">[1]</a> 
