@@ -35,3 +35,18 @@ def up_in_put_barrier(S0,K,T,r,q,sigma,B,R):
 prc = up_in_put_barrier(S0,K,T,r,q,sigma,B,R)
 print('\nThe price of the up and in put option is:',round(prc,4))
 
+# Monte Carlo Simulation
+def up_in_put_barrier_mc(S0,K,T,r,q,sigma,B,R):
+    N = 50000 # number of simulations
+    M = 5000 # number of discrete steps in a price path
+    dt = T/M # time length of steps
+    wiener = np.random.normal(loc=0.0, scale=np.sqrt(dt), size = (N,M))
+    St = S0 * np.exp(np.cumsum((r-q-0.5*sigma**2)*dt + sigma*wiener, axis=1))
+    payoff = np.maximum(K-St[:,-1], 0)
+    prc_max = np.amax(St, axis=1)
+    payoff[prc_max <= B] = R
+    prc = np.exp(-r*T) * payoff.mean()
+    return prc
+
+prc_mc = up_in_put_barrier_mc(S0,K,T,r,q,sigma,B,R)
+print('\nThe Monte Carlo price of the up and in put option is:',round(prc_mc,4))
